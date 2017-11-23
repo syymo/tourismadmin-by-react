@@ -46,7 +46,14 @@ const config = {
 				test: /\.css$/,
 				loader: 'style-loader!css-loader'
 			},
-			
+			/*derServer: {
+				historyApiFllback: true,
+				satic: 
+				proxy: {
+					
+				}
+			}
+*/
 		]
 	},
 	//出口

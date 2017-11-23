@@ -4289,30 +4289,24 @@ var Root = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
-				_reactRouterDom.BrowserRouter,
+				_reactRouterDom.HashRouter,
 				null,
-				'//\u8FD9\u91CC\u66FF\u6362\u4E4B\u524D\u7684indnx\uFF0C\u53D8\u6210\u4E86\u7A0B\u5E8F\u7684\u5165\u53E3',
 				_react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_reactRouterDom.Route, { component: _index2.default, path: '/' }),
-					_react2.default.createElement(_reactRouterDom.Route, { component: _list2.default, path: '/list' })
+					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _index2.default }),
+					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/list', component: _list2.default })
 				)
 			)
 
 			/*
-   <Router>
+   <HashRouter>
        <div>
-         <ul>
-           <li><Link to="/">index</Link></li>
-           <li><Link to="/list">Topics</Link></li>
-         </ul>
-   		      <hr />
-   		      <Route exact path="/" component={Index} />
-         <Route  path="/list" component={ComponentList} />
+         	<Route exact path="/" component={Index} />
+         	<Route  path="/list" component={ComponentList} />
        </div>
-    </Router>	
-    */
+   </HashRouter>	
+   */
 			;
 		}
 	}]);
@@ -4323,7 +4317,7 @@ var Root = function (_React$Component) {
 exports.default = Root;
 
 
-_reactDom2.default.render(_react2.default.createElement(_index2.default, null), document.getElementById('example'));
+_reactDom2.default.render(_react2.default.createElement(Root, null), document.getElementById('example'));
 
 //10-1 00:10:27
 

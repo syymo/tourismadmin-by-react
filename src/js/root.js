@@ -2,42 +2,34 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Index from './index';
 import ComponentList from './components/list';
-import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter, HashRouter,Router,Route, Switch, Link} from 'react-router-dom';
 //import {IndexRoute, Redirect, browserHistory, Router,Route, Link ,applyRouterMiddleware} from 'react-router';
 
 export default class Root extends React.Component{
 	render(){
 		return(
-			<BrowserRouter>
-				//这里替换之前的indnx，变成了程序的入口
-				<div>
-					<Route component={Index}  path="/" />
-					<Route  component={ComponentList}  path="/list" />
+			<HashRouter>
+				{/*这里替换之前的indnx，变成了程序的入口*/}
+				<div> 
+					<Route  exact path="/" component={Index} />
+					<Route  exact path="/list" component={ComponentList}   />
 				</div>
-			</BrowserRouter>
+			</HashRouter>
 			
 			/*
-			<Router>
+			<HashRouter>
 			    <div>
-			      <ul>
-			        <li><Link to="/">index</Link></li>
-			        <li><Link to="/list">Topics</Link></li>
-			      </ul>
-
-			      <hr />
-
-			      <Route exact path="/" component={Index} />
-			      <Route  path="/list" component={ComponentList} />
+			      	<Route exact path="/" component={Index} />
+			      	<Route  path="/list" component={ComponentList} />
 			    </div>
-			 </Router>	
-			 */
+			</HashRouter>	
+			*/
 		)
 	}
 }
 
-
 ReactDOM.render(
-	<Index/>,document.getElementById('example')
+	<Root/>,document.getElementById('example')
 );
 
 
