@@ -6,9 +6,11 @@ import ComponentHeader from './components/header';
 import ComponentFooter from './components/footer';
 import BodyIndex from './components/bodyIndex';
 
-class Index extends React.Component{
+
+/*import 'antd/dist/antd.css';*/
+export default class Index extends React.Component{
 	render(){
-		var component = <ComponentHeader/>
+		var component = <ComponentHeader userId = {123}/>
 		/*
 		if(用户已登录){
 			component = <ComponentLoginedHeader/>
@@ -20,13 +22,14 @@ class Index extends React.Component{
 			<div>
 				{component}
 				{/*<ComponentHeader/>*/}
-				<BodyIndex/>
+				<BodyIndex name={"syymo"}/>
 				<ComponentFooter/>
 			</div>
 		)
 	}
 }
 //入口定义
-ReactDOM.render(
+/*ReactDOM.render(
 	<Index/>,document.getElementById('example')
 );
+*/

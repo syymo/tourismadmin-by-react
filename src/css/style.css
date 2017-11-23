@@ -1,0 +1,15 @@
+body{
+	font-size:15px;
+}
+.haerderMenu{
+	height:60px;
+}
+.haerderMenu ul li {
+	float:left;
+	list-style:none; 
+	margin-left:30px;
+}
+.haerderMenu ul li a{
+	color:#fff;
+	text-decoration:none; 
+}
