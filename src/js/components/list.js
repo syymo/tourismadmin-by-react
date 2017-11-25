@@ -1,10 +1,12 @@
-import React from 'react';
-export default class ComponentList extends React.Component{
+import React from 'React';
+
+export default class ComponentDetailsList extends React.Component{
 	render(){
 		return(
 			<div>
-				<h2>列表页面</h2>
+				<h1>list页面</h1>
 			</div>
+
 		)
 	}
 }

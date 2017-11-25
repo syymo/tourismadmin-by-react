@@ -5,13 +5,14 @@ var ReactDOM = require('react-dom');
 import ComponentHeader from './components/header';
 import ComponentFooter from './components/footer';
 import BodyIndex from './components/bodyIndex';
+import BasicLayout from './components/BasicLayout';
 
 
-/*import 'antd/dist/antd.css';*/
+import 'antd/dist/antd.css';
 export default class Index extends React.Component{
 	render(){
-		var component = <ComponentHeader userId = {123}/>
 		/*
+		var component = <ComponentHeader userId = {123}/>
 		if(用户已登录){
 			component = <ComponentLoginedHeader/>
 		}else{
@@ -20,16 +21,16 @@ export default class Index extends React.Component{
 		*/
 		return (
 			<div>
-				{component}
+				{/*component*/}
 				{/*<ComponentHeader/>*/}
-				<BodyIndex name={"syymo"}/>
-				<ComponentFooter/>
+				{/*<BodyIndex name={"syymo"}/>*/}
+				{/*<ComponentFooter/>*/}
+				<BasicLayout/>
 			</div>
 		)
 	}
 }
 //入口定义
-/*ReactDOM.render(
-	<Index/>,document.getElementById('example')
+ReactDOM.render(
+	<Index/>,document.getElementById('root')
 );
-*/
