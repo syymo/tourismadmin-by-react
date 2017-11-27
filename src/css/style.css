@@ -39,14 +39,21 @@ body{
 #components-layout-demo-custom-trigger .ant-layout-sider-collapsed .nav-text {
   display: none;
 }   
-#components-layout-demo-custom-trigger a{
-	color: rgba(255, 255, 255, 0.67);
-	text-underline:none;
+/* #components-layout-demo-custom-trigger a{
+  color: rgba(255, 255, 255, 0.67);
+  text-underline:none;
 } 
 #components-layout-demo-custom-trigger a:hover{
-	color:#fff;
-	text-underline:none;
+  color:#fff;
+  text-underline:none;
 }
 #components-layout-demo-custom-trigger a:focus{
-	text-decoration:none;
+  text-decoration:none;
+} */
+
+#components-layout-demo-custom-trigger .BussinessImg{
+  width:500px;
+}
+.BussinessSpan{
+  width:500px;
 }

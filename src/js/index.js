@@ -2,13 +2,16 @@ var React = require('react');	//引用react
 var ReactDOM = require('react-dom');
 
 //导入其他的js
-import ComponentHeader from './components/header';
+/*import ComponentHeader from './components/header';
 import ComponentFooter from './components/footer';
 import BodyIndex from './components/bodyIndex';
+import ComponentList from './components/list';*/
+
 import BasicLayout from './components/BasicLayout';
 
 
-import 'antd/dist/antd.css';
+
+//import 'antd/dist/antd.css';
 export default class Index extends React.Component{
 	render(){
 		/*

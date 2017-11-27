@@ -4,7 +4,7 @@ const path = require('path');
 const config = {
 	//入口
 	context: __dirname + '/src',	//全局状态下的目录
-	entry: './js/root.js',
+	entry: './js/index.js',
 	//
 	module: {
 		loaders: [
