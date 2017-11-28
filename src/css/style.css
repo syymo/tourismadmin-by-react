@@ -51,9 +51,22 @@ body{
   text-decoration:none;
 } */
 
-#components-layout-demo-custom-trigger .BussinessImg{
+/* #components-layout-demo-custom-trigger .BussinessImg{
+  width:200px;
+  word-break:normal;
+} */
+/* .BussinessSpan{
   width:500px;
+} */
+#content tr  td{
+  word-break: normal;
 }
-.BussinessSpan{
-  width:500px;
+#content .createtime{
+  width:180px;
+}
+#content .BussinessImg{
+  width:300px;
+}
+#content img{
+  width:292px;
 }

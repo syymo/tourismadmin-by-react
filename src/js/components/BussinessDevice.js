@@ -75,8 +75,12 @@ export default class BussinessInfo extends React.Component {
 		        }
 	      	)
 
-	 }
-
+	}
+	componentWillUnmount() {
+	 	/*data = [];*/
+	 	//等组件销毁的时候 清空数据
+	 	data.splice(0,data.length);
+	}
 
 	render(){
 		const state = this.state;

@@ -63,9 +63,9 @@ export default class BussinessInfo extends React.Component {
 	      	.then(res => res.json())
 	      	.then(
 	        	(result) => {
-	        		console.log(result.data.list)
+	        		// console.log(result.data.list)
 			        for(let i=0;i<result.data.list.length;i++){
-			        	console.log(result.data.list[i])
+			        	// console.log(result.data.list[i])
 			        	data.push({
 			        		key: result.data.list[i].kid,
 						    id: i+1,
@@ -86,8 +86,12 @@ export default class BussinessInfo extends React.Component {
 		        }
 	      	)
 
-	 }
-
+	}
+	componentWillUnmount() {
+	 	/*data = [];*/
+	 	//等组件销毁的时候 清空数据
+	 	data.splice(0,data.length);
+	}
 
 	render(){
 		const state = this.state;
@@ -100,7 +104,7 @@ export default class BussinessInfo extends React.Component {
 	    } else {
 	      	return (
 		        <div>
-	        		<Table {...this.state} columns={columns} dataSource={data} />
+	        		<Table id="BussinessInfo" {...this.state} columns={columns} dataSource={data} />
 	      		</div>
 		      );
 		    }

@@ -68,19 +68,26 @@ export default class BussinessInfo extends React.Component {
 	      	.then(res => res.json())
 	      	.then(
 	        	(result) => {
-			        for(let i=0;i<result.data.length;i++){
-			        	data.push({
-			        		key: result.data[i].tid,
-						    id: i+1,
-						    price: result.data[i].price,
-						    tname: result.data[i].tname,
-						    info: result.data[i].info,
-			        	})
-			        }
+	        		//console.log(this.state.items);
+	        		/*if(data.length>0){
+	        			//return data;
+	        		}else{*/
+	        			for(let i=0;i<result.data.length;i++){
+				        	data.push({
+				        		key: result.data[i].tid,
+							    id: i+1,
+							    price: result.data[i].price,
+							    tname: result.data[i].tname,
+							    info: result.data[i].info,
+				        	})
+				        }
+	        		//}
+			        
 			        this.setState({
 			            isLoaded: true,
-			            items: result.data
+			            items: data
 			        });
+			        //data.splice(0,data.length);
 		        },
 		        (error) => {
 		          this.setState({
@@ -91,7 +98,11 @@ export default class BussinessInfo extends React.Component {
 	      	)
 
 	 }
-
+	 componentWillUnmount() {
+	 	/*data = [];*/
+	 	//等组件销毁的时候 清空数据
+	 	data.splice(0,data.length);
+	 }
 
 	render(){
 		const state = this.state;
@@ -104,7 +115,7 @@ export default class BussinessInfo extends React.Component {
 	    } else {
 	      	return (
 		        <div>
-	        		<Table {...this.state} columns={columns} dataSource={data} />
+	        		<Table {...this.state} columns={columns} dataSource={items} />
 	      		</div>
 		      );
 		    }

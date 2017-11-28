@@ -24,6 +24,7 @@ const columns = [
 	  	dataIndex: 'createTime',
 	  	key: 'createTime',
 	  	width: 70,
+	  	className: 'createtime',
 	},{
 	  	title: 'Action',
 	  	key: 'action',
@@ -58,6 +59,17 @@ export default class BussinessInfo extends React.Component {
 			items: []
         };
 	};
+	formatDate (time) {
+		time = new Date(time);
+		var year = time.getFullYear();
+		var month = time.getMonth()+1;
+		var date = time.getDate();
+		var hour = time.getHours();
+		var minute = time.getMinutes();
+		var second = time.getSeconds();
+		time = year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second;
+		return time;
+	};
 	componentDidMount() {
 	    fetch("http://172.16.120.129:8080/travel/businessImg/selectImgByBid.action?bid=2511150102")
 	      	.then(res => res.json())
@@ -69,7 +81,7 @@ export default class BussinessInfo extends React.Component {
 			        		key: result.data.list[i].imgid,
 						    id: i+1,
 						    imgPath: <span className="BussinessSpan" dangerouslySetInnerHTML = {{__html:'<img class="" src="http://172.16.120.129:8080'+result.data.list[i].imgPath+'" />'}} />,
-						    createTime: result.data.list[i].createTime
+						    createTime: this.formatDate(result.data.list[i].createTime)
 			        	})
 			        }
 			        this.setState({
@@ -85,9 +97,14 @@ export default class BussinessInfo extends React.Component {
 		        }
 	      	)
 
-	 }
+	}
+	componentWillUnmount() {
+	 	/*data = [];*/
+	 	//等组件销毁的时候 清空数据
+	 	data.splice(0,data.length);
+	}
 
-//<p dangerouslySetInnerHTML = {{__html:'<img src="http://172.16.120.129:8080"'+result.data.list[i].imgPath+>'" >'}} />
+
 	render(){
 		const state = this.state;
 		const { error, isLoaded, items } = this.state;

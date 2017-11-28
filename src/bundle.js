@@ -56205,9 +56205,9 @@ var BussinessInfo = function (_React$Component) {
 			fetch("http://172.16.120.129:8080/travel/businessKeepsake/findKeepsakeByBid.action?bid=2511150102").then(function (res) {
 				return res.json();
 			}).then(function (result) {
-				console.log(result.data.list);
+				// console.log(result.data.list)
 				for (var i = 0; i < result.data.list.length; i++) {
-					console.log(result.data.list[i]);
+					// console.log(result.data.list[i])
 					data.push({
 						key: result.data.list[i].kid,
 						id: i + 1,
@@ -56225,6 +56225,13 @@ var BussinessInfo = function (_React$Component) {
 					error: error
 				});
 			});
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			/*data = [];*/
+			//等组件销毁的时候 清空数据
+			data.splice(0, data.length);
 		}
 	}, {
 		key: 'render',
@@ -56253,7 +56260,7 @@ var BussinessInfo = function (_React$Component) {
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_table2.default, _extends({}, this.state, { columns: columns, dataSource: data }))
+					_react2.default.createElement(_table2.default, _extends({ id: 'BussinessInfo' }, this.state, { columns: columns, dataSource: data }))
 				);
 			}
 		}
@@ -56400,6 +56407,13 @@ var BussinessInfo = function (_React$Component) {
 					error: error
 				});
 			});
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			/*data = [];*/
+			//等组件销毁的时候 清空数据
+			data.splice(0, data.length);
 		}
 	}, {
 		key: 'render',
@@ -56572,6 +56586,10 @@ var BussinessInfo = function (_React$Component) {
 			fetch("http://172.16.120.129:8080/travel/ticket/findTicketByBid.action?bid=2511150102").then(function (res) {
 				return res.json();
 			}).then(function (result) {
+				//console.log(this.state.items);
+				/*if(data.length>0){
+    	//return data;
+    }else{*/
 				for (var i = 0; i < result.data.length; i++) {
 					data.push({
 						key: result.data[i].tid,
@@ -56581,16 +56599,26 @@ var BussinessInfo = function (_React$Component) {
 						info: result.data[i].info
 					});
 				}
+				//}
+
 				_this2.setState({
 					isLoaded: true,
-					items: result.data
+					items: data
 				});
+				//data.splice(0,data.length);
 			}, function (error) {
 				_this2.setState({
 					isLoaded: true,
 					error: error
 				});
 			});
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			/*data = [];*/
+			//等组件销毁的时候 清空数据
+			data.splice(0, data.length);
 		}
 	}, {
 		key: 'render',
@@ -56619,7 +56647,7 @@ var BussinessInfo = function (_React$Component) {
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_table2.default, _extends({}, this.state, { columns: columns, dataSource: data }))
+					_react2.default.createElement(_table2.default, _extends({}, this.state, { columns: columns, dataSource: items }))
 				);
 			}
 		}
@@ -56707,7 +56735,8 @@ var columns = [{
 	title: 'CreateTime',
 	dataIndex: 'createTime',
 	key: 'createTime',
-	width: 70
+	width: 70,
+	className: 'createtime'
 }, {
 	title: 'Action',
 	key: 'action',
@@ -56764,6 +56793,19 @@ var BussinessInfo = function (_React$Component) {
 	}
 
 	_createClass(BussinessInfo, [{
+		key: 'formatDate',
+		value: function formatDate(time) {
+			time = new Date(time);
+			var year = time.getFullYear();
+			var month = time.getMonth() + 1;
+			var date = time.getDate();
+			var hour = time.getHours();
+			var minute = time.getMinutes();
+			var second = time.getSeconds();
+			time = year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+			return time;
+		}
+	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			var _this2 = this;
@@ -56777,7 +56819,7 @@ var BussinessInfo = function (_React$Component) {
 						key: result.data.list[i].imgid,
 						id: i + 1,
 						imgPath: _react2.default.createElement('span', { className: 'BussinessSpan', dangerouslySetInnerHTML: { __html: '<img class="" src="http://172.16.120.129:8080' + result.data.list[i].imgPath + '" />' } }),
-						createTime: result.data.list[i].createTime
+						createTime: _this2.formatDate(result.data.list[i].createTime)
 					});
 				}
 				_this2.setState({
@@ -56791,9 +56833,13 @@ var BussinessInfo = function (_React$Component) {
 				});
 			});
 		}
-
-		//<p dangerouslySetInnerHTML = {{__html:'<img src="http://172.16.120.129:8080"'+result.data.list[i].imgPath+>'" >'}} />
-
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			/*data = [];*/
+			//等组件销毁的时候 清空数据
+			data.splice(0, data.length);
+		}
 	}, {
 		key: 'render',
 		value: function render() {
@@ -56880,7 +56926,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var FormItem = _form2.default.Item;
 var showHeader = true;
-
 var columns = [{
 	title: 'Id',
 	dataIndex: 'id',
@@ -56900,12 +56945,14 @@ var columns = [{
 	title: 'CreateTime',
 	dataIndex: 'createTime',
 	key: 'createTime',
-	width: 70
+	width: 70,
+	className: 'createtime'
 }, {
 	title: 'PayTime',
 	dataIndex: 'payTime',
 	key: 'payTime',
-	width: 70
+	width: 70,
+	className: 'createtime'
 }, {
 	title: 'Uid',
 	dataIndex: 'uid',
@@ -56963,10 +57010,40 @@ var BussinessInfo = function (_React$Component) {
 			filtered: true,
 			items: []
 		};
+
 		return _this;
 	}
 
 	_createClass(BussinessInfo, [{
+		key: 'formatDate',
+		value: function formatDate(time) {
+			if (time == null) {
+				return time;
+			} else {
+				time = new Date(time);
+				var year = time.getFullYear();
+				var month = this.formatNum(time.getMonth() + 1);
+				var date = this.formatNum(time.getDate());
+				var hour = this.formatNum(time.getHours());
+				var minute = this.formatNum(time.getMinutes());
+				var second = this.formatNum(time.getSeconds());
+
+				time = year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+				return time;
+			}
+		}
+	}, {
+		key: 'formatNum',
+		value: function formatNum(num) {
+			if (num < 10) {
+				num = "0" + num;
+				console.log(num);
+				return num;
+			} else {
+				return num;
+			}
+		}
+	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			var _this2 = this;
@@ -56974,14 +57051,17 @@ var BussinessInfo = function (_React$Component) {
 			fetch("http://172.16.120.129:8080/travel/order/selectOrderByBid.action?bid=2511150102").then(function (res) {
 				return res.json();
 			}).then(function (result) {
+				//console.log(result)
+				//var time = new Date(1511854015000);
+				//console.log(this.formatDate(1511854015000));
 				for (var i = 0; i < result.data.list.length; i++) {
 					data.push({
 						key: result.data.list[i].oid,
 						id: i + 1,
 						oid: result.data.list[i].oid,
 						status: result.data.list[i].status,
-						createTime: result.data.list[i].createTime,
-						payTime: result.data.list[i].payTime,
+						createTime: _this2.formatDate(result.data.list[i].createTime),
+						payTime: _this2.formatDate(result.data.list[i].payTime),
 						uid: result.data.list[i].uid
 					});
 				}
@@ -56995,6 +57075,13 @@ var BussinessInfo = function (_React$Component) {
 					error: error
 				});
 			});
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			/*data = [];*/
+			//等组件销毁的时候 清空数据
+			data.splice(0, data.length);
 		}
 	}, {
 		key: 'render',
@@ -57023,7 +57110,7 @@ var BussinessInfo = function (_React$Component) {
 				//console.log(document.getElementsByClassName("bussinessInfo")[0])
 				return _react2.default.createElement(
 					'div',
-					{ className: 'bussinessInfo' },
+					null,
 					_react2.default.createElement(_table2.default, _extends({}, this.state, { columns: columns, dataSource: data }))
 				);
 			}
